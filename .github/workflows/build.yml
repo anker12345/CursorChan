@@ -1,0 +1,59 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Build
+        run: dotnet build src/CursorShelf -c Release
+
+      - name: Smoke test
+        run: dotnet run --project tests/Smoke -c Release
+
+      - name: Publish (single exe, no install needed)
+        run: >
+          dotnet publish src/CursorShelf -c Release -r win-x64 --self-contained true
+          -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true -p:DebugType=none -o out/standalone
+
+      - name: Publish (small exe, needs .NET 10 Desktop Runtime)
+        run: >
+          dotnet publish src/CursorShelf -c Release -r win-x64 --self-contained false
+          -p:PublishSingleFile=true -p:DebugType=none -o out/small
+
+      - name: Package
+        shell: pwsh
+        run: |
+          $v = if ($env:GITHUB_REF_TYPE -eq 'tag') { $env:GITHUB_REF_NAME } else { 'dev' }
+          Copy-Item README.md, LICENSE out/standalone/
+          Copy-Item README.md, LICENSE out/small/
+          Compress-Archive out/standalone/* "CursorShelf-$v-win-x64.zip"
+          Compress-Archive out/small/* "CursorShelf-$v-win-x64-small.zip"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CursorShelf
+          path: CursorShelf-*.zip
+
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: CursorShelf-*.zip
+          generate_release_notes: true
