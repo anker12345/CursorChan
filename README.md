@@ -20,11 +20,11 @@
 
 <img src="art/mascot-chibi.png" width="180" align="right" alt="カーソルちゃん">
 
-矢印カーソル形の帽子をかぶり、大きな矢印を抱えた「カーソルちゃん」が案内します。イラストは画像生成モデル Anima（ComfyUI）で作り、矢印を太くする手直しをしています。
+矢印カーソル形の帽子をかぶり、大きな矢印を抱えた「カーソルちゃん」が案内します。イラストは画像生成モデル Anima（ComfyUI）で作りました。
 
-- `art/mascot-chibi.png` … マスコットの透過画像（白いステッカー縁つき）
-- `art/mascot-icon.png` … アプリアイコン用（矢印を太くする前の元絵）
-- `art/anima/` … 生成と手直しのスクリプト（`make_chara.py` / `thicken.py`）と元絵
+- `art/mascot-chibi.png` … マスコットの透過画像（白いステッカー縁つき。アプリ画面・サムネイル用）
+- `art/mascot-icon.png` … アプリアイコン用（中身は同じ絵）
+- `art/anima/` … 生成のスクリプト（`make_chara.py`）、背景を抜いてステッカー縁を付ける `sticker.py`、矢印を太くした別案を作る `thicken.py` と元絵
 - `art/render.ps1` … HTML を Edge で PNG にするスクリプト
 - `art/icon.html` … アプリアイコンの元
 - `art/booth-thumbnail.html` … BOOTH 用サムネイル（1200 × 1200）の元
