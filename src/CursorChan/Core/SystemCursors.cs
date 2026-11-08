@@ -1,6 +1,6 @@
 using Microsoft.Win32;
 
-namespace CursorShelf.Core;
+namespace CursorChan.Core;
 
 /// <summary>Windows のカーソル設定（HKCU\Control Panel\Cursors）の読み書き。管理者権限は不要。</summary>
 public static class SystemCursors

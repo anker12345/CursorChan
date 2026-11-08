@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- カーソルちゃん：矢印カーソルの形をしたマスコット -->
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.6" stop-color="#F7F7FF"/>
+      <stop offset="1" stop-color="#E4E6FF"/>
+    </linearGradient>
+    <radialGradient id="eye" cx="0.5" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="#3A3290"/>
+      <stop offset="0.7" stop-color="#2B2363"/>
+      <stop offset="1" stop-color="#5B6CFF"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 影 -->
+  <ellipse cx="268" cy="474" rx="118" ry="13" fill="#1B1640" opacity="0.13"/>
+
+  <!-- 手（体の後ろ） -->
+  <rect x="112" y="196" width="46" height="96" rx="23" transform="rotate(-32 135 270)"
+        fill="#FFFFFF" stroke="#2B2363" stroke-width="10"/>
+  <path d="M66,196 q-10,8 -12,20 M80,176 q-12,4 -18,14" fill="none" stroke="#2B2363"
+        stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- 体（矢印） -->
+  <path d="M150,48 L150,392 L232,318 L290,446 L352,418 L296,292 L408,292 Z"
+        fill="url(#body)" stroke="#2B2363" stroke-width="16" stroke-linejoin="round"/>
+
+  <!-- 星のヘアピン -->
+  <path d="M196,118 l7.6,15.4 17,2.5 -12.3,12 2.9,16.9 -15.2,-8 -15.2,8 2.9,-16.9 -12.3,-12 17,-2.5 z"
+        fill="#FFD24D" stroke="#2B2363" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- 目 -->
+  <ellipse cx="204" cy="222" rx="17" ry="24" fill="url(#eye)"/>
+  <ellipse cx="280" cy="222" rx="17" ry="24" fill="url(#eye)"/>
+  <circle cx="198" cy="212" r="6.5" fill="#FFFFFF"/>
+  <circle cx="274" cy="212" r="6.5" fill="#FFFFFF"/>
+  <circle cx="210" cy="233" r="3" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="286" cy="233" r="3" fill="#FFFFFF" opacity="0.9"/>
+
+  <!-- ほっぺ -->
+  <ellipse cx="180" cy="258" rx="15" ry="8" fill="#FF8FB1" opacity="0.65"/>
+  <ellipse cx="306" cy="258" rx="15" ry="8" fill="#FF8FB1" opacity="0.65"/>
+
+  <!-- 口 -->
+  <path d="M230,254 Q242,274 254,254 Z" fill="#2B2363" stroke="#2B2363" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M236,262 Q242,268 248,262 Q242,259 236,262 Z" fill="#FF7A9C"/>
+
+  <!-- しっぽ（矢印の軸）のリボン -->
+  <g transform="translate(300 372) rotate(-24)">
+    <path d="M0,0 L-30,-16 L-30,16 Z" fill="#FF7A9C" stroke="#2B2363" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M0,0 L30,-16 L30,16 Z" fill="#FF7A9C" stroke="#2B2363" stroke-width="5" stroke-linejoin="round"/>
+    <circle r="8" fill="#FF9DB6" stroke="#2B2363" stroke-width="5"/>
+  </g>
+
+  <!-- きらきら -->
+  <path d="M104,66 q3,13 16,16 q-13,3 -16,16 q-3,-13 -16,-16 q13,-3 16,-16 z" fill="#FFD24D"/>
+  <path d="M232,30 q2,8 10,10 q-8,2 -10,10 q-2,-8 -10,-10 q8,-2 10,-10 z" fill="#FF8FB1"/>
+</svg>

@@ -1,4 +1,4 @@
-namespace CursorShelf.Core;
+namespace CursorChan.Core;
 
 /// <summary>Windows のカーソルの役割（レジストリの値の名前と表示名）。</summary>
 public sealed record CursorRole(string Name, string Label, string DefaultFile);

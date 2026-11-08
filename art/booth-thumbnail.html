@@ -1,0 +1,45 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&display=block" rel="stylesheet">
+<style>
+  html, body { margin: 0; width: 1200px; height: 1200px; overflow: hidden; }
+  body {
+    font-family: "M PLUS Rounded 1c", "Yu Gothic UI", sans-serif; color: #2B2363;
+    background:
+      radial-gradient(circle at 15% 12%, rgba(255,255,255,.9) 0 6px, transparent 7px),
+      radial-gradient(circle at 88% 20%, rgba(255,255,255,.8) 0 5px, transparent 6px),
+      radial-gradient(circle at 80% 88%, rgba(255,255,255,.8) 0 7px, transparent 8px),
+      linear-gradient(160deg, #EDE9FF 0%, #DCE6FF 50%, #D3F0FF 100%);
+    position: relative;
+  }
+  .badge { position: absolute; top: 56px; right: 60px; background: #FF7A9C; color: #fff;
+    font-weight: 800; font-size: 46px; padding: 14px 34px; border-radius: 999px;
+    box-shadow: 0 8px 0 #E4587D; transform: rotate(6deg); }
+  .mascot { position: absolute; left: 30px; top: 60px; width: 560px; height: 560px; }
+  .title { position: absolute; left: 560px; top: 165px; }
+  .title .sub { font-size: 38px; font-weight: 500; color: #5B54A8; margin-bottom: 6px; }
+  .title h1 { margin: 0; font-size: 112px; font-weight: 800; letter-spacing: 2px; line-height: 1.05;
+    color: #3A2F8F; text-shadow: 0 6px 0 #fff, 0 10px 18px rgba(60,40,140,.18); }
+  .title .tag { margin-top: 18px; font-size: 34px; font-weight: 500; }
+  .shot { position: absolute; left: 90px; top: 640px; width: 1020px; border-radius: 22px; overflow: hidden;
+    box-shadow: 0 30px 60px rgba(40,30,110,.28); border: 6px solid #fff; }
+  .shot img { display: block; width: 100%; }
+  .chips { position: absolute; left: 0; right: 0; top: 548px; display: flex; justify-content: center; gap: 18px; }
+  .chip { background: #fff; border-radius: 999px; padding: 12px 26px; font-size: 30px; font-weight: 800;
+    color: #4B43A0; box-shadow: 0 6px 0 rgba(75,67,160,.15); }
+</style></head>
+<body>
+  <img class="mascot" src="mascot.svg">
+  <div class="badge">無料</div>
+  <div class="title">
+    <div class="sub">マウスカーソルの着せかえアプリ</div>
+    <h1>カーソル<br>ちゃん</h1>
+    <div class="tag">Windows 10 / 11</div>
+  </div>
+  <div class="chips">
+    <div class="chip">ワンクリックで切り替え</div>
+    <div class="chip">ドロップで取り込み</div>
+    <div class="chip">画像からカーソル作成</div>
+  </div>
+  <div class="shot"><img src="screenshot.png"></div>
+</body></html>

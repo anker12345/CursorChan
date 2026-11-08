@@ -9,6 +9,6 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="app.png" CopyToOutputDirectory="PreserveNewest" />
-    <ProjectReference Include="..\..\src\CursorShelf\CursorShelf.csproj" />
+    <ProjectReference Include="..\..\src\CursorChan\CursorChan.csproj" />
   </ItemGroup>
 </Project>

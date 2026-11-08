@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace CursorShelf.Core;
+namespace CursorChan.Core;
 
 internal static class Native
 {

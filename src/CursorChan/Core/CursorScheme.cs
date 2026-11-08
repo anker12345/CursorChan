@@ -1,4 +1,4 @@
-namespace CursorShelf.Core;
+namespace CursorChan.Core;
 
 public enum SchemeKind
 {

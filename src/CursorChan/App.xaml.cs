@@ -1,7 +1,7 @@
 using System.Text;
 using System.Windows;
 
-namespace CursorShelf;
+namespace CursorChan;
 
 public partial class App : Application
 {
@@ -12,7 +12,7 @@ public partial class App : Application
 
         DispatcherUnhandledException += (_, args) =>
         {
-            MessageBox.Show(args.Exception.Message, "CursorShelf - エラー",
+            MessageBox.Show(args.Exception.Message, "カーソルちゃん - エラー",
                 MessageBoxButton.OK, MessageBoxImage.Error);
             args.Handled = true;
         };

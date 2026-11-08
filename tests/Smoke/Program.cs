@@ -4,7 +4,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 using System.Windows.Media.Imaging;
-using CursorShelf.Core;
+using CursorChan.Core;
 using Microsoft.Win32;
 
 namespace Smoke;
@@ -19,7 +19,7 @@ internal static class Program
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         var cursorDir = args.FirstOrDefault(a => !a.StartsWith("--")) ?? Environment.ExpandEnvironmentVariables(@"%SystemRoot%\Cursors");
         var doApply = args.Contains("--apply");
-        var temp = Path.Combine(Path.GetTempPath(), "CursorShelf-smoke-" + Guid.NewGuid().ToString("N")[..6]);
+        var temp = Path.Combine(Path.GetTempPath(), "CursorChan-smoke-" + Guid.NewGuid().ToString("N")[..6]);
         Directory.CreateDirectory(temp);
         var created = new List<CursorScheme>();
 

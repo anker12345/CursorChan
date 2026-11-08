@@ -6,10 +6,10 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Threading;
-using CursorShelf.Core;
+using CursorChan.Core;
 using Microsoft.Win32;
 
-namespace CursorShelf;
+namespace CursorChan;
 
 public partial class MainWindow : Window
 {
@@ -111,6 +111,18 @@ public partial class MainWindow : Window
     {
         SearchHint.Visibility = SearchBox.Text.Length == 0 ? Visibility.Visible : Visibility.Collapsed;
         _view.Refresh();
+        FindChild<ScrollViewer>(Gallery)?.ScrollToTop();
+    }
+
+    private static T? FindChild<T>(DependencyObject parent) where T : DependencyObject
+    {
+        for (var i = 0; i < System.Windows.Media.VisualTreeHelper.GetChildrenCount(parent); i++)
+        {
+            var child = System.Windows.Media.VisualTreeHelper.GetChild(parent, i);
+            if (child is T t) return t;
+            if (FindChild<T>(child) is { } found) return found;
+        }
+        return null;
     }
 
     // ---------- 適用 ----------
@@ -238,7 +250,7 @@ public partial class MainWindow : Window
         if (dlg.ShowDialog(this) != true) return;
         if (CursorDecoder.Load(dlg.FileName) == null)
         {
-            MessageBox.Show(this, "カーソルとして読み込めないファイルでした。", "CursorShelf", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show(this, "カーソルとして読み込めないファイルでした。", "カーソルちゃん", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
         EditRole(r, s => SchemeLibrary.SetRoleFile(s, r.Role.Name, dlg.FileName));
@@ -259,7 +271,7 @@ public partial class MainWindow : Window
         catch (Exception ex) { ShowError("画像を開けませんでした", ex); return; }
         if (win.ShowDialog() != true) return;
 
-        var temp = Path.Combine(Path.GetTempPath(), $"CursorShelf-{Guid.NewGuid():N}.cur");
+        var temp = Path.Combine(Path.GetTempPath(), $"CursorChan-{Guid.NewGuid():N}.cur");
         try
         {
             CursorDecoder.WriteCursor(win.Image, win.HotX, win.HotY, temp);

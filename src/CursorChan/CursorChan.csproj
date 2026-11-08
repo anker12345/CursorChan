@@ -6,12 +6,12 @@
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>CursorShelf</AssemblyName>
-    <RootNamespace>CursorShelf</RootNamespace>
+    <AssemblyName>CursorChan</AssemblyName>
+    <RootNamespace>CursorChan</RootNamespace>
     <ApplicationIcon>Assets\app.ico</ApplicationIcon>
     <Version>0.1.0</Version>
-    <Product>CursorShelf</Product>
-    <Description>マウスカーソルのギャラリー＆切り替えツール</Description>
+    <Product>カーソルちゃん</Product>
+    <Description>カーソルちゃん - マウスカーソルの着せかえアプリ</Description>
     <Copyright>Copyright (c) 2026 anker12345</Copyright>
     <!-- WPF の Fluent テーマ（ThemeMode）は試験的機能扱いのため警告を抑える -->
     <NoWarn>$(NoWarn);WPF0001</NoWarn>
@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Resource Include="Assets\app.ico" />
+    <Resource Include="Assets\mascot.png" />
   </ItemGroup>
 
 </Project>

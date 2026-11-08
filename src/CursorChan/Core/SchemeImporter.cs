@@ -2,7 +2,7 @@ using System.IO.Compression;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace CursorShelf.Core;
+namespace CursorChan.Core;
 
 public sealed class ImportResult
 {
@@ -61,7 +61,7 @@ public static class SchemeImporter
 
     private static void ImportZip(string zip, ImportResult result, List<string> names)
     {
-        var temp = Path.Combine(Path.GetTempPath(), "CursorShelf-" + Guid.NewGuid().ToString("N"));
+        var temp = Path.Combine(Path.GetTempPath(), "CursorChan-" + Guid.NewGuid().ToString("N"));
         try
         {
             // UTF-8 フラグのない日本語のファイル名は Shift_JIS として読む

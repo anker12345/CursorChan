@@ -1,8 +1,8 @@
 using System.Text.Json;
 
-namespace CursorShelf.Core;
+namespace CursorChan.Core;
 
-/// <summary>アプリのライブラリ（%LOCALAPPDATA%\CursorShelf\Library）にあるカーソルセット。</summary>
+/// <summary>アプリのライブラリ（%LOCALAPPDATA%\CursorChan\Library）にあるカーソルセット。</summary>
 public static class SchemeLibrary
 {
     private const string ManifestName = "scheme.json";
@@ -13,7 +13,7 @@ public static class SchemeLibrary
     };
 
     public static string Root { get; } = Path.Combine(
-        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CursorShelf", "Library");
+        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CursorChan", "Library");
 
     private sealed class Manifest
     {

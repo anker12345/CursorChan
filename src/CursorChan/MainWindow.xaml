@@ -1,9 +1,9 @@
-<Window x:Class="CursorShelf.MainWindow"
+<Window x:Class="CursorChan.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:c="clr-namespace:CursorShelf.Controls"
-        xmlns:local="clr-namespace:CursorShelf"
-        Title="CursorShelf" Icon="Assets/app.ico"
+        xmlns:c="clr-namespace:CursorChan.Controls"
+        xmlns:local="clr-namespace:CursorChan"
+        Title="カーソルちゃん" Icon="Assets/app.ico"
         Width="1200" Height="780" MinWidth="860" MinHeight="540"
         WindowStartupLocation="CenterScreen"
         AllowDrop="True" DragEnter="Window_DragEnter" DragOver="Window_DragEnter"
@@ -129,10 +129,14 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="CursorShelf" FontSize="26" FontWeight="SemiBold" />
-                <TextBlock Text="マウスカーソルのギャラリー　｜　ダブルクリックで適用、zip やフォルダーはドロップで取り込み"
-                           FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Image Source="Assets/mascot.png" Width="60" Height="60" Margin="-8,-6,6,-6"
+                       RenderOptions.BitmapScalingMode="HighQuality" />
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="カーソルちゃん" FontSize="26" FontWeight="SemiBold" />
+                    <TextBlock Text="マウスカーソルの着せかえアプリ　｜　ダブルクリックで適用、zip やフォルダーはドロップで取り込み"
+                               FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                </StackPanel>
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
                 <Grid Width="220" Margin="0,0,8,0">
@@ -189,8 +193,11 @@
                     Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
                     BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}">
                 <Grid>
-                    <TextBlock x:Name="DetailEmpty" Text="セットを選んでください" HorizontalAlignment="Center" VerticalAlignment="Center"
-                               Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                    <StackPanel x:Name="DetailEmpty" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="Assets/mascot.png" Width="140" Height="140" RenderOptions.BitmapScalingMode="HighQuality" />
+                        <TextBlock Text="左のギャラリーからセットを選んでね" HorizontalAlignment="Center" Margin="0,8,0,0"
+                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                    </StackPanel>
                     <Grid x:Name="DetailContent" Visibility="Collapsed">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -253,8 +260,8 @@
                 Background="#99000000">
             <Border Margin="40" CornerRadius="16" BorderThickness="3" BorderBrush="White">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="&#xE896;" FontFamily="{StaticResource IconFont}" FontSize="48" Foreground="White" HorizontalAlignment="Center" />
-                    <TextBlock Text="ドロップして取り込み" FontSize="26" FontWeight="SemiBold" Foreground="White" Margin="0,12,0,4" HorizontalAlignment="Center" />
+                    <Image Source="Assets/mascot.png" Width="180" Height="180" RenderOptions.BitmapScalingMode="HighQuality" />
+                    <TextBlock Text="ここに落としてね！" FontSize="26" FontWeight="SemiBold" Foreground="White" Margin="0,12,0,4" HorizontalAlignment="Center" />
                     <TextBlock Text="zip ・ フォルダー ・ install.inf ・ .cur ・ .ani" FontSize="14" Foreground="White" HorizontalAlignment="Center" />
                 </StackPanel>
             </Border>

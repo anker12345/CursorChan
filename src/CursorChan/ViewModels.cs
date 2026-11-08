@@ -1,8 +1,8 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using CursorShelf.Core;
+using CursorChan.Core;
 
-namespace CursorShelf;
+namespace CursorChan;
 
 public abstract class Observable : INotifyPropertyChanged
 {

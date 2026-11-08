@@ -1,7 +1,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace CursorShelf.Core;
+namespace CursorChan.Core;
 
 /// <summary>カーソル配布物によく入っている install.inf から、役割とファイルの対応を読む。</summary>
 public static class InfParser

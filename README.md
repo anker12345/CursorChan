@@ -1,8 +1,8 @@
 <p align="center"><img src="docs/icon.png" width="96" alt=""></p>
 
-<h1 align="center">CursorShelf</h1>
+<h1 align="center">カーソルちゃん</h1>
 
-<p align="center">マウスカーソルを、ギャラリーから選んでワンクリックで切り替える Windows アプリ</p>
+<p align="center">マウスカーソルの着せかえアプリ。ギャラリーから選んで、ワンクリックで切り替え（Windows 10 / 11）</p>
 
 ![スクリーンショット](docs/screenshot.png)
 
@@ -16,18 +16,30 @@
 - **サイズ変更・既定に戻す** — カーソルの大きさ（32〜256 px）の変更と、Windows 標準へのワンクリックでの戻しができます。
 - コントロールパネルの「マウスのプロパティ」にも、適用したセットが表示されます。
 
+## マスコット
+
+<img src="art/mascot.png" width="160" align="right" alt="カーソルちゃん">
+
+矢印カーソルの姿をした「カーソルちゃん」が案内します。元データは [art/mascot.svg](art/mascot.svg) です。
+
+- `art/render.ps1` … SVG / HTML を Edge で PNG にするスクリプト
+- `art/icon.html` … アプリアイコンの元
+- `art/booth-thumbnail.html` … BOOTH 用サムネイル（1200 × 1200）の元
+
+<br clear="right">
+
 ## 動作環境
 
 - Windows 10 / 11（64 bit）
 
 ## ダウンロード
 
-[Releases](../../releases) から zip をダウンロードして展開し、`CursorShelf.exe` を起動してください。インストールは不要です。
+[Releases](../../releases) から zip をダウンロードして展開し、`CursorChan.exe` を起動してください。インストールは不要です。
 
 | ファイル | 内容 |
 |---|---|
-| `CursorShelf-vX.Y.Z-win-x64.zip` | ふつうはこちら。そのまま動きます（約 60 MB） |
-| `CursorShelf-vX.Y.Z-win-x64-small.zip` | 小さい版（1 MB 未満）。[.NET 10 デスクトップ ランタイム](https://dotnet.microsoft.com/download/dotnet/10.0) が必要です |
+| `CursorChan-vX.Y.Z-win-x64.zip` | ふつうはこちら。そのまま動きます（約 60 MB） |
+| `CursorChan-vX.Y.Z-win-x64-small.zip` | 小さい版（1 MB 未満）。[.NET 10 デスクトップ ランタイム](https://dotnet.microsoft.com/download/dotnet/10.0) が必要です |
 
 ### 「Windows によって PC が保護されました」と出たら
 
@@ -35,7 +47,7 @@
 
 ## データの保存場所
 
-取り込んだセットは `%LOCALAPPDATA%\CursorShelf\Library` にコピーされます。アプリを削除するときは、このフォルダーも消してください（先に「既定に戻す」を押しておくと安心です）。
+取り込んだセットは `%LOCALAPPDATA%\CursorChan\Library` にコピーされます。アプリを削除するときは、このフォルダーも消してください（先に「既定に戻す」を押しておくと安心です）。
 
 ## 注意
 
@@ -47,7 +59,7 @@
 [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) が必要です。
 
 ```bash
-dotnet build src/CursorShelf
+dotnet build src/CursorChan
 dotnet run --project tests/Smoke          # 簡易テスト
 dotnet run --project tests/Smoke -- --apply  # 実際に切り替えて元に戻すテスト
 ```
@@ -55,14 +67,14 @@ dotnet run --project tests/Smoke -- --apply  # 実際に切り替えて元に戻
 配布用の exe：
 
 ```bash
-dotnet publish src/CursorShelf -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish
+dotnet publish src/CursorChan -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish
 ```
 
 `v` から始まるタグ（例：`v0.1.0`）を push すると、GitHub Actions がビルドして Releases に zip を置きます。
 
 ## しくみ（開発者向け）
 
-カーソルの設定は `HKCU\Control Panel\Cursors` にあり、ここを書き換えたあと `SystemParametersInfo(SPI_SETCURSORS)` を呼ぶと即座に反映されます。主なコードは `src/CursorShelf/Core` にあります。
+カーソルの設定は `HKCU\Control Panel\Cursors` にあり、ここを書き換えたあと `SystemParametersInfo(SPI_SETCURSORS)` を呼ぶと即座に反映されます。主なコードは `src/CursorChan/Core` にあります。
 
 | ファイル | 役割 |
 |---|---|

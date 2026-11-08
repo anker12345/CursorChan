@@ -6,7 +6,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace CursorShelf.Core;
+namespace CursorChan.Core;
 
 /// <summary>カーソル 1 つ分の画像（.ani ならコマ送り情報つき）。</summary>
 public sealed class CursorFrames

@@ -4,7 +4,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace CursorShelf;
+namespace CursorChan;
 
 /// <summary>画像を選んでホットスポット（クリック位置）を決めるダイアログ。</summary>
 public partial class PngCursorWindow : Window

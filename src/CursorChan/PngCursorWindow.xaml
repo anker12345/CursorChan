@@ -1,4 +1,4 @@
-<Window x:Class="CursorShelf.PngCursorWindow"
+<Window x:Class="CursorChan.PngCursorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="画像からカーソルを作る" Width="520" Height="600" ResizeMode="NoResize"
