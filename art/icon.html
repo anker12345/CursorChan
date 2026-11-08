@@ -3,15 +3,19 @@
   html, body { margin: 0; background: transparent; }
   .tile {
     position: absolute; left: 40px; top: 40px; width: 944px; height: 944px; border-radius: 220px;
-    background: linear-gradient(160deg, #8B7CF6 0%, #6C8CFF 55%, #4FB3FF 100%);
-    box-shadow: inset 0 -24px 60px rgba(30, 20, 90, .25), inset 0 20px 40px rgba(255, 255, 255, .25);
+    background: linear-gradient(160deg, #C9C2F5 0%, #A9B8F7 50%, #8FD0F7 100%);
+    box-shadow: inset 0 -24px 60px rgba(40, 30, 110, .22), inset 0 20px 40px rgba(255, 255, 255, .4);
     overflow: hidden;
   }
-  .glow { position: absolute; width: 700px; height: 700px; left: 160px; top: 120px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,.35), rgba(255,255,255,0) 70%); }
-  img { position: absolute; width: 1000px; height: 1000px; left: 0px; top: 30px; }
+  .glow { position: absolute; width: 760px; height: 760px; left: 92px; top: 60px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,.55), rgba(255,255,255,0) 70%); }
+  .star { position: absolute; color: #FFE27A; font-size: 90px; text-shadow: 0 4px 0 rgba(40,30,110,.15); }
+  img { position: absolute; width: 940px; height: 940px; left: 42px; top: 46px; }
 </style></head>
 <body>
-  <div class="tile"><div class="glow"></div></div>
-  <img src="mascot-icon.svg">
+  <div class="tile"><div class="glow"></div>
+    <div class="star" style="left:760px; top:90px">★</div>
+    <div class="star" style="left:820px; top:230px; font-size:54px; color:#FFB3CB">★</div>
+  </div>
+  <img src="mascot-chibi.png">
 </body></html>

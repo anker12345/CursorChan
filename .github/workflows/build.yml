@@ -43,6 +43,8 @@ jobs:
           $v = if ($env:GITHUB_REF_TYPE -eq 'tag') { $env:GITHUB_REF_NAME } else { 'dev' }
           Copy-Item README.md, LICENSE out/standalone/
           Copy-Item README.md, LICENSE out/small/
+          Copy-Item src/CursorChan/Assets/Fonts/OFL.txt out/standalone/FONT-LICENSE-MPLUSRounded1c.txt
+          Copy-Item src/CursorChan/Assets/Fonts/OFL.txt out/small/FONT-LICENSE-MPLUSRounded1c.txt
           Compress-Archive out/standalone/* "CursorChan-$v-win-x64.zip"
           Compress-Archive out/small/* "CursorChan-$v-win-x64-small.zip"
 

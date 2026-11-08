@@ -18,13 +18,18 @@
 
 ## マスコット
 
-<img src="art/mascot.png" width="160" align="right" alt="カーソルちゃん">
+<img src="art/mascot-chibi.png" width="180" align="right" alt="カーソルちゃん">
 
-矢印カーソルの姿をした「カーソルちゃん」が案内します。元データは [art/mascot.svg](art/mascot.svg) です。
+矢印カーソル形の帽子をかぶり、大きな矢印を抱えた「カーソルちゃん」が案内します。イラストは画像生成モデル Anima（ComfyUI）で作り、矢印を太くする手直しをしています。
 
-- `art/render.ps1` … SVG / HTML を Edge で PNG にするスクリプト
+- `art/mascot-chibi.png` … マスコットの透過画像（白いステッカー縁つき）
+- `art/anima/` … 生成と手直しのスクリプト（`make_chara.py` / `thicken.py`）と元絵
+- `art/render.ps1` … HTML を Edge で PNG にするスクリプト
 - `art/icon.html` … アプリアイコンの元
 - `art/booth-thumbnail.html` … BOOTH 用サムネイル（1200 × 1200）の元
+- `art/old/` … 最初の SVG 版マスコット
+
+見出しのフォントは [M PLUS Rounded 1c](https://fonts.google.com/specimen/M+PLUS+Rounded+1c)（SIL Open Font License 1.1）をアプリに同梱しています。
 
 <br clear="right">
 

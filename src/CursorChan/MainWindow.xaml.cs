@@ -20,6 +20,8 @@ public partial class MainWindow : Window
     private readonly DispatcherTimer _statusTimer = new() { Interval = TimeSpan.FromSeconds(6) };
     private bool _ready;
 
+    private const string IdleHint = "こんにちは！カードをダブルクリックすると着せかえできるよ";
+
     private SchemeItem? Selected => Gallery.SelectedItem as SchemeItem;
 
     public MainWindow()
@@ -35,7 +37,8 @@ public partial class MainWindow : Window
         SizeSlider.Value = SystemCursors.GetBaseSize();
         UpdateSizeText();
         _sizeTimer.Tick += (_, _) => { _sizeTimer.Stop(); ApplySize(); };
-        _statusTimer.Tick += (_, _) => { _statusTimer.Stop(); StatusText.Text = ""; };
+        _statusTimer.Tick += (_, _) => { _statusTimer.Stop(); StatusText.Text = IdleHint; };
+        StatusText.Text = IdleHint;
 
         ReloadAll();
         _ready = true;
@@ -134,7 +137,7 @@ public partial class MainWindow : Window
             SystemCursors.Apply(item.Scheme);
             UpdateApplied();
             if (Selected != null) UpdateKindText(Selected);
-            if (!quiet) Status($"「{item.Name}」を適用しました");
+            if (!quiet) Status($"「{item.Name}」に着せかえたよ！");
         }
         catch (Exception ex)
         {
@@ -156,7 +159,7 @@ public partial class MainWindow : Window
     {
         var def = _items.First(i => i.Scheme.Kind == SchemeKind.WindowsDefault);
         Apply(def, true);
-        Status("Windows 標準のカーソルに戻しました");
+        Status("Windows 標準にもどしたよ");
     }
 
     // ---------- セットの管理 ----------
@@ -166,7 +169,7 @@ public partial class MainWindow : Window
         var name = SchemeLibrary.UniqueName("新しいセット", _items.Select(i => i.Name));
         SchemeLibrary.CreateNew(name);
         ReloadAll(name, SchemeKind.Library);
-        Status("新しいセットを作りました。右のボタンで役割ごとにカーソルを設定できます");
+        Status("新しいセットを作ったよ。右のボタンでカーソルを入れてね");
         NameBox.Focus();
         NameBox.SelectAll();
     }
@@ -179,7 +182,7 @@ public partial class MainWindow : Window
             var name = SchemeLibrary.UniqueName(item.Name + " のコピー", _items.Select(i => i.Name));
             SchemeLibrary.Duplicate(item.Scheme, name);
             ReloadAll(name, SchemeKind.Library);
-            Status($"「{name}」を作りました");
+            Status($"「{name}」を作ったよ。自由に編集してね");
         }
         catch (Exception ex)
         {
@@ -199,7 +202,7 @@ public partial class MainWindow : Window
             SystemCursors.UnregisterUserScheme(item.Scheme.Name);
             SchemeLibrary.Delete(item.Scheme);
             ReloadAll();
-            Status($"「{item.Name}」を削除しました");
+            Status($"「{item.Name}」を削除したよ");
         }
         catch (Exception ex)
         {
@@ -234,7 +237,7 @@ public partial class MainWindow : Window
         SchemeLibrary.Save(item.Scheme);
         if (wasApplied) SystemCursors.Apply(item.Scheme);
         ReloadAll(name, SchemeKind.Library);
-        Status($"名前を「{name}」に変えました");
+        Status($"名前を「{name}」にしたよ");
     }
 
     // ---------- 役割ごとの編集 ----------
@@ -298,7 +301,7 @@ public partial class MainWindow : Window
             foreach (var role in _roles) role.Refresh();
             UpdateKindText(r.Owner);
             if (r.Owner.IsApplied) Apply(r.Owner, true);
-            Status($"「{r.Label}」を変更しました");
+            Status($"「{r.Label}」を変えたよ");
         }
         catch (Exception ex)
         {
@@ -353,7 +356,7 @@ public partial class MainWindow : Window
 
         ReloadAll(result.Imported.LastOrDefault()?.Name, SchemeKind.Library);
         if (result.Imported.Count > 0)
-            Status($"{result.Imported.Count} 個のセットを取り込みました");
+            Status($"{result.Imported.Count} 個のセットを取り込んだよ！");
         if (result.Messages.Count > 0)
             MessageBox.Show(this, string.Join("\n\n", result.Messages), "取り込みのお知らせ",
                 MessageBoxButton.OK, result.Imported.Count > 0 ? MessageBoxImage.Information : MessageBoxImage.Warning);
@@ -396,7 +399,7 @@ public partial class MainWindow : Window
         try
         {
             SystemCursors.SetBaseSize((int)SizeSlider.Value);
-            Status($"カーソルのサイズを {(int)SizeSlider.Value} px にしました");
+            Status($"カーソルのサイズを {(int)SizeSlider.Value} px にしたよ");
         }
         catch (Exception ex)
         {

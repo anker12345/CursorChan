@@ -4,8 +4,9 @@
         xmlns:c="clr-namespace:CursorChan.Controls"
         xmlns:local="clr-namespace:CursorChan"
         Title="カーソルちゃん" Icon="Assets/app.ico"
-        Width="1200" Height="780" MinWidth="860" MinHeight="540"
+        Width="1200" Height="800" MinWidth="880" MinHeight="560"
         WindowStartupLocation="CenterScreen"
+        Background="{StaticResource WindowBg}"
         AllowDrop="True" DragEnter="Window_DragEnter" DragOver="Window_DragEnter"
         DragLeave="Window_DragLeave" Drop="Window_Drop">
 
@@ -19,34 +20,38 @@
         </Style>
 
         <Style x:Key="Badge" TargetType="Border">
-            <Setter Property="CornerRadius" Value="4" />
-            <Setter Property="Padding" Value="6,1" />
+            <Setter Property="CornerRadius" Value="999" />
+            <Setter Property="Padding" Value="9,2" />
             <Setter Property="Margin" Value="0,0,6,0" />
-            <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" />
+            <Setter Property="Background" Value="{StaticResource LavenderSoft}" />
         </Style>
 
         <!-- ギャラリーのカード -->
         <Style x:Key="CardContainer" TargetType="ListBoxItem">
-            <Setter Property="Margin" Value="4" />
+            <Setter Property="Margin" Value="5" />
             <Setter Property="Padding" Value="0" />
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
             <EventSetter Event="MouseDoubleClick" Handler="Card_DoubleClick" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBoxItem">
-                        <Border x:Name="Outer" CornerRadius="10" BorderThickness="2" BorderBrush="Transparent" Padding="1">
-                            <Border x:Name="Card" Width="222" Height="168" CornerRadius="8" Padding="14,12"
-                                    Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
-                                    BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}" BorderThickness="1">
+                        <Border x:Name="Outer" CornerRadius="19" BorderThickness="3" BorderBrush="Transparent" Padding="0">
+                            <Border x:Name="Card" Width="220" Height="172" CornerRadius="16" Padding="12,12,12,10"
+                                    Background="{StaticResource CardBg}" BorderBrush="{StaticResource LavenderLine}" BorderThickness="1.5">
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="14" ShadowDepth="3" Direction="270" Opacity="0.10" Color="#3A2F8F" />
+                                </Border.Effect>
                                 <ContentPresenter />
                             </Border>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Card" Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" />
+                                <Setter TargetName="Card" Property="BorderBrush" Value="{StaticResource Lavender}" />
                             </Trigger>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="Outer" Property="BorderBrush" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                                <Setter TargetName="Outer" Property="BorderBrush" Value="{StaticResource Indigo}" />
+                                <Setter TargetName="Card" Property="Background" Value="{StaticResource CardSelectedBg}" />
+                                <Setter TargetName="Card" Property="BorderBrush" Value="Transparent" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -61,7 +66,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Border CornerRadius="6" Background="{DynamicResource SubtleFillColorSecondaryBrush}">
+                <Border CornerRadius="12" Background="{StaticResource LavenderSoft}">
                     <UniformGrid Columns="4" Margin="6,0">
                         <c:CursorImage FilePath="{Binding ArrowPath}" Width="40" Height="40" />
                         <c:CursorImage FilePath="{Binding HandPath}" Width="40" Height="40" />
@@ -69,15 +74,15 @@
                         <c:CursorImage FilePath="{Binding WaitPath}" Width="40" Height="40" />
                     </UniformGrid>
                 </Border>
-                <TextBlock Grid.Row="1" Text="{Binding Name}" FontSize="15" FontWeight="SemiBold"
-                           TextTrimming="CharacterEllipsis" Margin="2,10,2,4" ToolTip="{Binding Name}" />
+                <TextBlock Grid.Row="1" Text="{Binding Name}" FontSize="14.5" FontWeight="Bold" Foreground="{StaticResource Navy}"
+                           TextTrimming="CharacterEllipsis" Margin="2,9,2,5" ToolTip="{Binding Name}" />
                 <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="2,0">
                     <Border Style="{StaticResource Badge}">
-                        <TextBlock Text="{Binding KindLabel}" FontSize="11" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                        <TextBlock Text="{Binding KindLabel}" FontSize="11" Foreground="{StaticResource SubText}" />
                     </Border>
-                    <Border Style="{StaticResource Badge}" Background="{DynamicResource AccentFillColorDefaultBrush}"
+                    <Border Style="{StaticResource Badge}" Background="{StaticResource Pink}"
                             Visibility="{Binding IsApplied, Converter={StaticResource BoolVis}}">
-                        <TextBlock Text="使用中" FontSize="11" Foreground="{DynamicResource TextOnAccentFillColorPrimaryBrush}" />
+                        <TextBlock Text="★ 使用中" FontSize="11" FontWeight="Bold" Foreground="White" />
                     </Border>
                 </StackPanel>
             </Grid>
@@ -91,13 +96,13 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Border Width="44" Height="44" CornerRadius="6" Background="{DynamicResource SubtleFillColorSecondaryBrush}">
+                <Border Width="44" Height="44" CornerRadius="10" Background="{StaticResource LavenderSoft}">
                     <c:CursorImage FilePath="{Binding PreviewPath}" Width="36" Height="36" />
                 </Border>
                 <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="8,0">
-                    <TextBlock Text="{Binding Label}" FontSize="13" />
+                    <TextBlock Text="{Binding Label}" FontSize="13" Foreground="{StaticResource Navy}" />
                     <TextBlock Text="{Binding FileName}" FontSize="11" TextTrimming="CharacterEllipsis"
-                               Foreground="{DynamicResource TextFillColorSecondaryBrush}" ToolTip="{Binding FileName}" />
+                               Foreground="{StaticResource SubText}" ToolTip="{Binding FileName}" />
                 </StackPanel>
                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center"
                             Visibility="{Binding IsEditable, Converter={StaticResource BoolVis}}">
@@ -115,34 +120,46 @@
         </DataTemplate>
     </Window.Resources>
 
-    <Grid>
+    <Grid TextElement.Foreground="{StaticResource Navy}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- ヘッダー -->
-        <Grid Margin="24,18,24,10">
+        <!-- 背景のきらきら -->
+        <Canvas Grid.RowSpan="3" IsHitTestVisible="False" Opacity="0.55">
+            <TextBlock Text="★" Canvas.Left="430" Canvas.Top="18" FontSize="18" Foreground="{StaticResource Star}" />
+            <TextBlock Text="★" Canvas.Left="462" Canvas.Top="58" FontSize="11" Foreground="{StaticResource Pink}" />
+            <TextBlock Text="✦" Canvas.Left="560" Canvas.Top="26" FontSize="14" Foreground="{StaticResource Lavender}" />
+        </Canvas>
+
+        <!-- ヘッダー：カーソルちゃんと吹き出し -->
+        <Grid Margin="14,8,24,4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                <Image Source="Assets/mascot.png" Width="60" Height="60" Margin="-8,-6,6,-6"
-                       RenderOptions.BitmapScalingMode="HighQuality" />
-                <StackPanel VerticalAlignment="Center">
-                    <TextBlock Text="カーソルちゃん" FontSize="26" FontWeight="SemiBold" />
-                    <TextBlock Text="マウスカーソルの着せかえアプリ　｜　ダブルクリックで適用、zip やフォルダーはドロップで取り込み"
-                               FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-                </StackPanel>
+            <Image Source="Assets/mascot.png" Width="112" Height="112" Margin="0,-4,0,-8"
+                   RenderOptions.BitmapScalingMode="HighQuality" />
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="4,0,12,0">
+                <TextBlock Text="カーソルちゃん" FontFamily="{StaticResource RoundFont}" FontWeight="ExtraBold" FontSize="30"
+                           Foreground="{StaticResource Navy}" />
+                <Grid HorizontalAlignment="Left" Margin="0,4,0,0">
+                    <Path Data="M0,12 L13,4 L13,20 Z" Fill="White" Stroke="{StaticResource LavenderLine}" StrokeThickness="1.5"
+                          VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <Border Margin="11,0,0,0" CornerRadius="14" Background="White" Padding="14,7"
+                            BorderBrush="{StaticResource LavenderLine}" BorderThickness="1.5">
+                        <TextBlock x:Name="StatusText" FontSize="13" TextTrimming="CharacterEllipsis" MaxWidth="420" />
+                    </Border>
+                </Grid>
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-                <Grid Width="220" Margin="0,0,8,0">
+                <Grid Width="210" Margin="0,0,8,0">
                     <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged" VerticalContentAlignment="Center" />
-                    <TextBlock Text="セットを検索" IsHitTestVisible="False" Margin="12,0,0,0" VerticalAlignment="Center"
-                               Foreground="{DynamicResource TextFillColorSecondaryBrush}" x:Name="SearchHint" />
+                    <TextBlock x:Name="SearchHint" Text="セットをさがす" IsHitTestVisible="False" Margin="12,0,0,0"
+                               VerticalAlignment="Center" Foreground="{StaticResource SubText}" />
                 </Grid>
                 <Button x:Name="ImportButton" Click="ImportButton_Click" Margin="0,0,8,0" Padding="12,6">
                     <StackPanel Orientation="Horizontal">
@@ -178,7 +195,7 @@
                 <ColumnDefinition Width="380" />
             </Grid.ColumnDefinitions>
 
-            <ListBox x:Name="Gallery" Margin="18,0,8,8" BorderThickness="0" Background="Transparent"
+            <ListBox x:Name="Gallery" Margin="16,0,6,8" BorderThickness="0" Background="Transparent"
                      SelectionChanged="Gallery_SelectionChanged"
                      ItemTemplate="{StaticResource CardTemplate}" ItemContainerStyle="{StaticResource CardContainer}"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -189,14 +206,16 @@
                 </ListBox.ItemsPanel>
             </ListBox>
 
-            <Border Grid.Column="1" Margin="0,6,24,12" CornerRadius="8" BorderThickness="1"
-                    Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
-                    BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}">
+            <Border Grid.Column="1" Margin="0,6,24,12" CornerRadius="18" BorderThickness="1.5"
+                    Background="{StaticResource CardBg}" BorderBrush="{StaticResource LavenderLine}">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="18" ShadowDepth="3" Direction="270" Opacity="0.10" Color="#3A2F8F" />
+                </Border.Effect>
                 <Grid>
                     <StackPanel x:Name="DetailEmpty" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Image Source="Assets/mascot.png" Width="140" Height="140" RenderOptions.BitmapScalingMode="HighQuality" />
-                        <TextBlock Text="左のギャラリーからセットを選んでね" HorizontalAlignment="Center" Margin="0,8,0,0"
-                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                        <Image Source="Assets/mascot.png" Width="150" Height="150" RenderOptions.BitmapScalingMode="HighQuality" />
+                        <TextBlock Text="左のギャラリーからえらんでね" HorizontalAlignment="Center" Margin="0,8,0,0"
+                                   Foreground="{StaticResource SubText}" />
                     </StackPanel>
                     <Grid x:Name="DetailContent" Visibility="Collapsed">
                         <Grid.RowDefinitions>
@@ -204,29 +223,29 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <StackPanel Margin="18,16,18,8">
-                            <TextBlock x:Name="NameText" FontSize="20" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                            <TextBlock x:Name="NameText" FontFamily="{StaticResource RoundFont}" FontWeight="ExtraBold" FontSize="21"
+                                       TextTrimming="CharacterEllipsis" />
                             <TextBox x:Name="NameBox" FontSize="16" Visibility="Collapsed"
                                      LostFocus="NameBox_LostFocus" KeyDown="NameBox_KeyDown" ToolTip="名前を変更（Enter で確定）" />
-                            <TextBlock x:Name="KindText" FontSize="12" Margin="0,6,0,12"
-                                       Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                            <TextBlock x:Name="KindText" FontSize="12" Margin="0,6,0,12" Foreground="{StaticResource SubText}" />
                             <WrapPanel>
-                                <Button x:Name="ApplyButton" Click="Apply_Click" Padding="14,6" Margin="0,0,6,6"
-                                        Style="{DynamicResource AccentButtonStyle}">
+                                <Button x:Name="ApplyButton" Click="Apply_Click" Padding="16,7" Margin="0,0,6,6"
+                                        Style="{StaticResource PrimaryButton}">
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Style="{StaticResource IconText}" Text="&#xE73E;" Margin="0,0,8,0" />
-                                        <TextBlock Text="適用" />
+                                        <TextBlock Text="★" Margin="0,0,7,0" Foreground="{StaticResource Star}" VerticalAlignment="Center" />
+                                        <TextBlock Text="着せかえる" FontWeight="Bold" />
                                     </StackPanel>
                                 </Button>
-                                <Button x:Name="DuplicateButton" Click="Duplicate_Click" Padding="12,6" Margin="0,0,6,6">
+                                <Button x:Name="DuplicateButton" Click="Duplicate_Click" Padding="12,7" Margin="0,0,6,6">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Style="{StaticResource IconText}" Text="&#xE8C8;" Margin="0,0,8,0" />
                                         <TextBlock x:Name="DuplicateText" Text="複製" />
                                     </StackPanel>
                                 </Button>
-                                <Button x:Name="FolderButton" Click="OpenFolder_Click" Padding="10,6" Margin="0,0,6,6" ToolTip="フォルダーを開く">
+                                <Button x:Name="FolderButton" Click="OpenFolder_Click" Padding="10,7" Margin="0,0,6,6" ToolTip="フォルダーを開く">
                                     <TextBlock Style="{StaticResource IconText}" Text="&#xE838;" />
                                 </Button>
-                                <Button x:Name="DeleteButton" Click="Delete_Click" Padding="10,6" Margin="0,0,6,6" ToolTip="このセットを削除">
+                                <Button x:Name="DeleteButton" Click="Delete_Click" Padding="10,7" Margin="0,0,6,6" ToolTip="このセットを削除">
                                     <TextBlock Style="{StaticResource IconText}" Text="&#xE74D;" />
                                 </Button>
                             </WrapPanel>
@@ -251,17 +270,19 @@
             <Slider x:Name="SizeSlider" Grid.Column="1" Minimum="32" Maximum="256" TickFrequency="16"
                     IsSnapToTickEnabled="True" VerticalAlignment="Center" ValueChanged="SizeSlider_ValueChanged" />
             <TextBlock x:Name="SizeText" Grid.Column="2" Width="60" Margin="12,0,0,0" VerticalAlignment="Center" />
-            <TextBlock x:Name="StatusText" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center"
-                       Foreground="{DynamicResource TextFillColorSecondaryBrush}" TextTrimming="CharacterEllipsis" />
+            <TextBlock Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="12"
+                       Foreground="{StaticResource SubText}" TextTrimming="CharacterEllipsis"
+                       Text="ヒント：配布されているカーソルの zip やフォルダーは、ウィンドウに落とすだけで取り込めるよ" />
         </Grid>
 
         <!-- ドロップ中の表示 -->
         <Border x:Name="DropOverlay" Grid.RowSpan="3" Visibility="Collapsed" IsHitTestVisible="False"
-                Background="#99000000">
-            <Border Margin="40" CornerRadius="16" BorderThickness="3" BorderBrush="White">
+                Background="#D95A52C8">
+            <Border Margin="36" CornerRadius="28" BorderThickness="4" BorderBrush="White">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Image Source="Assets/mascot.png" Width="180" Height="180" RenderOptions.BitmapScalingMode="HighQuality" />
-                    <TextBlock Text="ここに落としてね！" FontSize="26" FontWeight="SemiBold" Foreground="White" Margin="0,12,0,4" HorizontalAlignment="Center" />
+                    <Image Source="Assets/mascot.png" Width="220" Height="220" RenderOptions.BitmapScalingMode="HighQuality" />
+                    <TextBlock Text="ここに落としてね！" FontFamily="{StaticResource RoundFont}" FontWeight="ExtraBold" FontSize="32"
+                               Foreground="White" Margin="0,10,0,6" HorizontalAlignment="Center" />
                     <TextBlock Text="zip ・ フォルダー ・ install.inf ・ .cur ・ .ani" FontSize="14" Foreground="White" HorizontalAlignment="Center" />
                 </StackPanel>
             </Border>

@@ -20,6 +20,7 @@
   <ItemGroup>
     <Resource Include="Assets\app.ico" />
     <Resource Include="Assets\mascot.png" />
+    <Resource Include="Assets\Fonts\MPLUSRounded1c-ExtraBold.ttf" />
   </ItemGroup>
 
 </Project>
