@@ -23,6 +23,7 @@
 矢印カーソル形の帽子をかぶり、大きな矢印を抱えた「カーソルちゃん」が案内します。イラストは画像生成モデル Anima（ComfyUI）で作り、矢印を太くする手直しをしています。
 
 - `art/mascot-chibi.png` … マスコットの透過画像（白いステッカー縁つき）
+- `art/mascot-icon.png` … アプリアイコン用（矢印を太くする前の元絵）
 - `art/anima/` … 生成と手直しのスクリプト（`make_chara.py` / `thicken.py`）と元絵
 - `art/render.ps1` … HTML を Edge で PNG にするスクリプト
 - `art/icon.html` … アプリアイコンの元
