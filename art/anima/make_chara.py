@@ -25,25 +25,9 @@ S = {
     "character": {"tags": ""},
 }
 
-# 共通の特徴: 白とネイビー、星のヘアピン、ピンクのリボン、矢印カーソル
+# カーソルちゃん: 矢印形の白い帽子、ラベンダーの髪、星のヘアピン、セーラー服、大きな矢印を抱っこ。
+# マスコットに使っているのは hatarrow の seed 303（raw\hatarrow_303.png）
 DESIGNS = {
-    "hoodie": (
-        "short hair, white hair, purple eyes, yellow star hair ornament, white hoodie, navy blue trim, "
-        "pink ribbon, holding giant mouse cursor, arrow, waving, smile, open mouth",
-        "A cute chibi mascot girl who personifies a computer mouse cursor. She hugs a giant white arrow-shaped "
-        "mouse pointer with a thick navy outline and waves at the viewer with her other hand. "
-        "Simple sticker art on a plain white background."),
-    "hat": (
-        "short hair, lavender hair, blue eyes, white hat, arrow-shaped hat, yellow star hair ornament, "
-        "white dress, navy blue collar, pink bow, waving, smile, blush",
-        "A cute chibi mascot girl who personifies a computer mouse cursor. She wears a white hat shaped like an "
-        "arrow mouse pointer with a navy outline, and waves happily. Simple sticker art on a plain white background."),
-    "ahoge": (
-        "medium hair, light blue hair, white hair, purple eyes, ahoge, yellow star hair ornament, "
-        "white sailor collar, navy blue skirt, pink ribbon, pointing up, index finger raised, smile, sparkle",
-        "A cute chibi mascot girl who personifies a computer mouse cursor. Her ahoge is shaped like a small white "
-        "arrow mouse pointer, and she cheerfully points upward with one finger. Simple sticker art on a plain white background."),
-    # 本命: 帽子の子（hat_44 の見た目）に、hoodie 案くらいの太さの矢印を抱っこさせる
     "hatarrow": (
         "short hair, lavender hair, blue eyes, white hat, arrow-shaped hat, arrow symbol on hat, "
         "yellow star hair ornament, white dress, navy blue sailor collar, pink bow, "

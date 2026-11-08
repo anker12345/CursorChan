@@ -229,11 +229,11 @@
                                      LostFocus="NameBox_LostFocus" KeyDown="NameBox_KeyDown" ToolTip="名前を変更（Enter で確定）" />
                             <TextBlock x:Name="KindText" FontSize="12" Margin="0,6,0,12" Foreground="{StaticResource SubText}" />
                             <WrapPanel>
-                                <Button x:Name="ApplyButton" Click="Apply_Click" Padding="16,7" Margin="0,0,6,6"
-                                        Style="{StaticResource PrimaryButton}">
+                                <Button x:Name="ApplyButton" Click="Apply_Click" Padding="12,7" Margin="0,0,6,6"
+                                       >
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="★" Margin="0,0,7,0" Foreground="{StaticResource Star}" VerticalAlignment="Center" />
-                                        <TextBlock Text="着せかえる" FontWeight="Bold" />
+                                        <TextBlock Style="{StaticResource IconText}" Text="&#xE73E;" Margin="0,0,8,0" />
+                                        <TextBlock Text="着せかえる" />
                                     </StackPanel>
                                 </Button>
                                 <Button x:Name="DuplicateButton" Click="Duplicate_Click" Padding="12,7" Margin="0,0,6,6">

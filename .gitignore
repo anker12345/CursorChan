@@ -8,9 +8,6 @@ publish/
 # Anima の生成途中の画像（元絵と本命だけ残す）
 art/anima/raw/*
 !art/anima/raw/hatarrow_303.png
-!art/anima/raw/hide95_base.png
-!art/anima/raw/hide95_45_303.png
-art/anima/cut/*
-!art/anima/cut/chosen.png
+art/anima/cut/
 art/anima/*.jpg
 art/anima/__pycache__/

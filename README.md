@@ -22,13 +22,11 @@
 
 矢印カーソル形の帽子をかぶり、大きな矢印を抱えた「カーソルちゃん」が案内します。イラストは画像生成モデル Anima（ComfyUI）で作りました。
 
-- `art/mascot-chibi.png` … マスコットの透過画像（白いステッカー縁つき。アプリ画面・サムネイル用）
-- `art/mascot-icon.png` … アプリアイコン用（中身は同じ絵）
-- `art/anima/` … 生成のスクリプト（`make_chara.py`）、背景を抜いてステッカー縁を付ける `sticker.py`、矢印を太くした別案を作る `thicken.py` と元絵
+- `art/mascot-chibi.png` … マスコットの透過画像（白いステッカー縁つき。アイコン・アプリ画面・サムネイルで使用）
+- `art/anima/` … 生成のスクリプト（`make_chara.py`）、背景を抜いてステッカー縁を付ける `sticker.py`、元絵
 - `art/render.ps1` … HTML を Edge で PNG にするスクリプト
 - `art/icon.html` … アプリアイコンの元
 - `art/booth-thumbnail.html` … BOOTH 用サムネイル（1200 × 1200）の元
-- `art/old/` … 最初の SVG 版マスコット
 
 見出しのフォントは [M PLUS Rounded 1c](https://fonts.google.com/specimen/M+PLUS+Rounded+1c)（SIL Open Font License 1.1）をアプリに同梱しています。
 
